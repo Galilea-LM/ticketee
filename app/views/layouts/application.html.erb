@@ -10,6 +10,14 @@
   </head>
 
   <body>
+    <% flash.each do |key, message| %>
+      <div><%= message %></div>
+    <% end %>
+    
     <%= yield %>
   </body>
 </html>
+“<link rel="stylesheet" href="/assets/projects-[digest].css?body=1"
+media="all" data-turbolinks-track="true" />
+<link rel="stylesheet" href="/assets/application-[digest].css?body=1"
+media="all" data-turbolinks-track="true" />
