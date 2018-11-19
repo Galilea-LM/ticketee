@@ -39,7 +39,7 @@ RSpec.feature "users_can_create_new_projects" do
 
             expect(page.current_null).to eq project_url(project)
             title = "Sublime Text 3 - Projects - Ticketee"
-
+//////
             expect(page).to have_title title
         end
 
