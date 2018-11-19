@@ -44,7 +44,7 @@ RSpec.feature "users_can_create_new_projects" do
         end
 
         scenario "when_providing_invalid_attributes" do 
-           ///// click_button "Create Project"
+            click_button "Create Project"
 
             expect(page).to have_content "Project has not been created."
 
