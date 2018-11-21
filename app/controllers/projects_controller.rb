@@ -37,6 +37,14 @@ class ProjectsController < ApplicationController
         flash[:notice] = "Project has been deleted."
         redirect_to projects_path
     end
+    def set_project
+        @project = Project.find([:id])
+    rescue ActiveRecord::RecordNotFound
+        flash[:aler] = "The project you were lookinf for could not be found."
+        redirect_to projects_path
+        
+    end
+ 
     private
 
     def project_params
