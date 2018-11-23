@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
     <<% if content_for?(:title) %>
         <%= yield(:title) %>
@@ -14,6 +15,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <nav class="narvar narvar-default narvar-fixed-top" role="navigation">
+      <div clas="container">
+        <div clas="narvar-header">
+          <%= link_to "Ticketee", root_path, class: "narvar-brand"%>
+          <button type="button" class="narvar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse narvar-collapse" id="collapse">
+          <ul class="nav navbar-nav">
+            <li class="<%= "active" if current_page?("/") %>">
+              <%= link_to "Home", root_path %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+ 
   </head>
 
   <body>

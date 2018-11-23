@@ -2,6 +2,9 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "projects";
+@import "responsive";
+@media(min-width: $screen-sm-min) {
+}
 header{
     @extend .page-header;
     position: relative;
@@ -21,6 +24,9 @@ header{
     h1,h2,h3,h4,h5,h6{
         max-width: 55%;
     }
+}
+body{
+    padding-top: 70px;
 }
 ul.actions{
     @extend .list-unstyled;
