@@ -5,13 +5,13 @@ class TicketsController < ApplicationController
         @ticket = @project.tickets.build
     end
     def create
-        @ticket = Project.tickets.build(tickets_params)
+        @ticket = @project.tickets.build(ticket_params)
         if @ticket.save
             flash[:notice] = "Ticket has been created."
             redirect_to [@project, @ticket]
         else
-            flash[:alert] =n "Ticket has not been created."
-            render new
+            flash[:alert] ="Ticket has not been created."
+            render "new"
         end
     end
     def show
@@ -19,11 +19,15 @@ class TicketsController < ApplicationController
     end
 
     private
-    def tickets_params
+
+    def ticket_params
         params.require(:ticket).permit(:name, :description)
     end
 
+    def set_ticket
+           @ticket = @project.tickets.find(params[:id])     
+    end
     def set_project
-           @project = Project.find(params[:project_id])     
+        @project = Project.find(params[:project_id])     
     end
 end

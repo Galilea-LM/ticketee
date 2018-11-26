@@ -1,7 +1,7 @@
 require "rails_helper"
 RSpec.feature "Users can create new tickets" do
     before do
-        project= FactoryGirl.create(:projects, name: "Internet Explorer")
+        project= FactoryBot.create(:projects, name: "Internet Explorer")
         visit project_path(project)
         click_link "New Ticket"
     end
