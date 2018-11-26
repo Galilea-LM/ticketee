@@ -41,8 +41,7 @@ class ProjectsController < ApplicationController
         @project = Project.find([:id])
     rescue ActiveRecord::RecordNotFound
         flash[:aler] = "The project you were lookinf for could not be found."
-        redirect_to projects_path
-        
+        redirect_to projects_path   
     end
  
     private
