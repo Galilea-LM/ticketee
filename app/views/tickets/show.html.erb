@@ -1,7 +1,10 @@
 <div id="ticket">
   <header>
     <h1><%= @project.name %></h1>
-     <h2><%= @ticket.name %></h2>
+    <h2><%= @ticket.name %></h2>
+    <ul>
+      <%= link_to "Edit Ticket", [:edit, @project, @ticket], class: "edit"  %>
+    </ul>
   </header>
 
   <%= simple_format(@ticket.description) %>
