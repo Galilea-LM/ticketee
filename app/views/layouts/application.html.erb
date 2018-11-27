@@ -12,7 +12,9 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <li class="<%= "active" if current_page?("/users/sing_up") %>">
+      <%= link_to "Sing up", new_user_registration_pat %>
+    </li>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <nav class="narvar narvar-default narvar-fixed-top" role="navigation">
