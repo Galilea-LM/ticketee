@@ -3,12 +3,34 @@
 @import "font-awesome";
 @import "projects";
 //@import "responsive";
+@import "tickets";
+
 
 @media(min-width: $screen-sm-min) {
     h1,h2,h3,h4,h5,h6{
         max-width: 55%;
     }
 }
+#attributes {
+    @extend .table;
+    @extend .table-condensed;
+    width: 65%;
+  
+    th {
+     width: 35%;
+    }
+  
+    tr:first-child {
+     td, th {
+      border-top: 0px;
+     }
+    }
+  
+    td, th {
+     line-height: 24px !important;
+    }
+   }
+  
 header{
     @extend .page-header;
     position: relative;
