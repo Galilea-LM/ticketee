@@ -1,7 +1,10 @@
 require "rails_helper"
 RSpec.feature "Users can edit existing tickets" do
+    let(:author) {FactoryBot.create(:author)}
     let(:project){FactoryBot.create(:project)}
-    let(:ticket){FactoryBot.create(:ticket, project: project)}
+    let(:ticket) do
+        {FactoryBot.create(:ticket, project: project, :author author)}
+    end
     before do
         visit project_ticket_path(project, ticket)
         click_link "Edit Ticket"

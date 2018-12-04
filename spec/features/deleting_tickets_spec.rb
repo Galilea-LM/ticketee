@@ -11,7 +11,7 @@ RSpec.feature "Users can delete tickets" do
 
     scenario "successfully" do
         click_link "Delete Ticket"
-        expec(page).to have_content "Ticket has been deleted."
-        expec(page.current_url).to eq project_url(project)
+        expect(page).to have_content "Ticket has been deleted."
+        expect(page.current_url).to eq project_url(project)
     end
 end

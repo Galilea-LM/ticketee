@@ -1,7 +1,7 @@
 require "rails_helper"
-RSpec.feature "users_can_create_new_projects" do
+RSpec.feature "Users_can_create_new_projects" do
     before do
-        login_as(FactoryBot.Create(:user, :admin))
+        login_as(FactoryBot.create(:user, :admin))
         visit "/"
         click_link "New Project"
     end

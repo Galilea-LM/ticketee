@@ -13,6 +13,6 @@ unless User.exists?(email: "viewer@ticketee.com")
 end
 ["Sublime Text 3", "Internet Explorer"].each do |name|
     unless Project.exists?(name: name)
-        Project.create!(name: name, descriptionL "A sample project about #{name}")
+        Project.create!(name: name, description: "A sample project about #{name}")
     end
 end

@@ -7,6 +7,6 @@ RSpec.feature "Users can sing up" do
         fill_in "iser_password", with: "password"
         fill_in "password confirmation", with: "password"
         click_button "Sing up"
-        expec(page).to have_content("You have signed up successfully.")
+        expect(page).to have_content("You have signed up successfully.")
     end
 end
