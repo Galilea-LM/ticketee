@@ -6,9 +6,10 @@ RSpec.feature "Users can delete tickets" do
         FactoryBot.create(:ticket, project: project, author: author)
     end
     before do
-        visit project_ticket_path(project,ticket)
+        login_as(author)
+        assign_role!(author, :manager, project)
+        visit project_ticket_path(project, ticket)
     end
-
     scenario "successfully" do
         click_link "Delete Ticket"
         expect(page).to have_content "Ticket has been deleted."
