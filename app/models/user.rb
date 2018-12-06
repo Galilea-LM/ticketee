@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
    def to_s
-    "#{email} (#{admin? "Admin" : "User"})"
-     
+    "#{email} (#{admin? ? "Admin" : "User"})"
    end
 end
