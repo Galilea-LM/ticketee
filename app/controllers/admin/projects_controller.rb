@@ -12,6 +12,7 @@ class Admin::ProjectsController < Admin::ApplicationController
       render "new"
     end
   end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
@@ -22,6 +23,6 @@ class Admin::ProjectsController < Admin::ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name, :description)    
+    params.require(:project).permit(:name, :description)
   end
 end
