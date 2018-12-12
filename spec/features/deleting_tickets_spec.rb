@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 RSpec.feature "Users can delete tickets" do
     let(:author) {FactoryBot.create(:user)}
     let(:project){FactoryBot.create(:project)}

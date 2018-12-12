@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 RSpec.feature "Users can sing up" do
      scenario "when providing valid details" do
         visit "/"

@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 require "support/authorization_helpers"
 RSpec.feature "Users can view projects" do
   let(:user){FactoryBot.create(:user)}

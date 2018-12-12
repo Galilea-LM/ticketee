@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 RSpec.feature "Users can create new tickets" do
             let(:user){FactoryBot.create(:user)}
     before do

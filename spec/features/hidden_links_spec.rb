@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 RSpec.feature "Users can only see the appropiate links" do
     let(:user){FactoryBot.create(:user)}
     let(:admin){FactoryBot.create(:user, :admin)}
