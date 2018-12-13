@@ -7,10 +7,15 @@ RSpec.feature "Users can view projects" do
     login_as(user)
     assign_role!(:user, :viewer, project)
   end
+  scenario "unlles they do not have permission" do
+    FactoryBot.create(:project, name: "Hidden")
+    visit "/"
+    expect(page).not_to have_content "Hidden"
+  end
 
-    scenario "whit the project details" do
-        visit "/"
-        click_link "Sublume Text 3"
-        expect(page.current_url).to eq project_url(project)
+  scenario "whit the project details" do
+     visit "/"
+     click_link "Sublume Text 3"
+    expect(page.current_url).to eq project_url(project)
     end
 end

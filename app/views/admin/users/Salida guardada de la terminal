@@ -1,0 +1,148 @@
+Last login: Thu Dec 13 15:05:39 on ttys001
+MBP-de-Galilea:~ galilealopez$ cd Documents
+MBP-de-Galilea:Documents galilealopez$ cd ticketee
+MBP-de-Galilea:ticketee galilealopez$ vim
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 1 viewing_projects_spec.rb   2 projects_controller_spec.rb   3 projects_controller.rb                                 Buffers 
+  4 class ProjectsController < ApplicationController                                                   │[in]: ~/Documents/ticketee/ap↷
+  3   before_action :set_project, only: [:show, :edit, :update]                                        │▷ assets/                     
+  2                                                                                                    │▷ channels/                   
+  1   def index                                                                                        │▼ controllers/                
+5       @projects =  policy_scopr(Project)                                                             │ ▷ admin/                     
+  1   end                                                                                              │ ▼ concerns/                  
+  2                                                                                                    │  application_controller.rb   
+  3   def show                                                                                         │  projects_controller.rb      
+  4     authorize @project, :show?                                                                     │  tickets_controller.rb       
+  5     @tickets = @project.tickets                                                                    │▷ helpers/                    
+  6   end                                                                                              │▷ jobs/                       
+  7                                                                                                    │▷ mailers/                    
+  8   def edit                                                                                         │▷ models/                     
+  9     authorize @project, :update?                                                                   │▷ policies/                   
+ 10   end                                                                                              │▷ views/                      
+ 11                                                                                                    │~                             
+ 12   def update                                                                                       │~                             
+ 13     authorize @project, :update?                                                                   │~                             
+ 14     if @project.update(project_params)                                                             │~                             
+ 15       flash[:notice] = "Project has been updated."                                                 │~                             
+ 16       redirect_to @project                                                                         │~                             
+ 17     else                                                                                           │~                             
+ 18       flash.now[:alert] = "Project has not been updated."                                          │~                             
+ 19       render "edit"                                                                                │~                             
+ 20     end                                                                                            │~                             
+ 21   end                                                                                              │~                             
+ 22                                                                                                    │~                             
+ 23   private                                                                                          │~                             
+ 24                                                                                                    │~                             
+ 25   def set_project                                                                                  │~                             
+ 26     @project = Project.find(params[:id])                                                           │~                             
+ 27   rescue ActiveRecord::RecordNotFound                                                              │~                             
+ 28     flash[:alert] = "The project you were looking for could not be found."                         │~                             
+ 29     redirect_to projects_path                                                                      │~                             
+ 30   end                                                                                              │~                             
+ 31                                                                                                    │~                             
+ 32   def project_params                                                                               │~                             
+ 33     params.require(:project).permit(:name, :description)                                           │~                             
+ 34   end                                                                                              │~                             
+ 35 end                                                                                                │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+~                                                                                                      │~                             
+ ❶  * 861 bytes projects_controller.rb  ruby  ❖ ⓢ                                 | utf-8  5:39   ❷  vimfiler                
+
