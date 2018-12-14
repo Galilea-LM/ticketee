@@ -14,6 +14,10 @@ RSpec.feature "Users can only see the appropiate links" do
         login_as(user)
         assign_role!(user, :viewer, project)
       end
+      scenario "cannot see the Edit Project link" do
+        visit project_path(project)
+        expect(page).not_to have_link "Edit Project"
+      end 
     end
 
     context "regular users" do
@@ -29,6 +33,10 @@ RSpec.feature "Users can only see the appropiate links" do
             visit "/"
             expect(page).to have_link "New Project"
         end
+        scenario "can see the Edit Project link" do
+          visit project_path(project)
+          expect(page).to have_link "Edit Project"
+        end 
     end
     context "admin users" do
         before {login_as(admin)}
