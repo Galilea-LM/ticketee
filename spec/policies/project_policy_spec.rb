@@ -1,4 +1,29 @@
 require "rails_helper"
+context "permissions" do
+  subject {ProjectPolicy.new(user, project)}
+  let(:user){FactoryBot.create(:user)}
+  let(:project){FactoryBot.create(:project)}
+  context "for anonymus users" do
+    let(:user) { nil }
+    it { should_not permit_accion :show }
+    it { should_not permit_accion :update }
+  end
+  context "for viewers of the project" do 
+    before {assign_role!(user, :viewer, project)}
+    it { should  permit_accion :show }
+    it { should_not permit_accion :update } 
+  end
+  context "for editors of the projet" do
+    before {assign_role!(user, :editor, project)}
+    it { should permit_accion :show }
+    it { should_not permit_accion :update }
+  end
+  context "for managers of the project" do
+    before { assign_role!(user, :manager, project)}
+    it { should permit_accion :show }
+    it { should permit_accion :update }
+  end
+end
 permissions :show? do
   let(:user){FactoryBot.create :user}
   let(:project){FactoryBot.create :project}

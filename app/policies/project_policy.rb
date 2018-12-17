@@ -8,8 +8,7 @@ class ProjectPolicy < ApplicationPolicy
  end
 
  def update?
-  user.try(:admin?) || record.roles.exists?
-  (user_id: user, role: 'manager')
+  user.try(:admin) || record.roles.exists?(user_id: user, role: 'manager')
  end
  def show?
   user.try(:admin?) || record.roles.exists?(user_id: user)
