@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Admin::ApplicationController < ApplicationController
-    before_action :authorize_admin!
+  before_action :authorize_admin!
   def new
     @project = Project.new
   end
@@ -7,20 +9,20 @@ class Admin::ApplicationController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      flahs[:notice] = "Project jas been created."
+      flahs[:notice] = 'Project jas been created.'
       redirect_to @project
     else
-      flahs.now[:alert] = "Project has not been created."
-      render "new"
+      flahs.now[:alert] = 'Project has not been created.'
+      render 'new'
     end
   end
 
-  def index
-  end
+  def index; end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    flahs[:notice] = "Project has been deleted."
+    flahs[:notice] = 'Project has been deleted.'
     redirect_to projects_path
   end
 
@@ -30,12 +32,10 @@ class Admin::ApplicationController < ApplicationController
     params.require(:project).permit(:name, :description)
   end
 
-
   def authorize_admin!
     authenticate_user!
     unless current_user.admin?
-      redirect_to root_path, alert: "You must be an admin to do that."
+      redirect_to root_path, alert: 'You must be an admin to do that.'
     end
   end
-
 end
