@@ -19,6 +19,10 @@ RSpec.feature 'Users can only see the appropiate links' do
       login_as(user)
       assign_role!(user, :viewer, project)
     end
+    scenario 'cannot see the new comment' do
+      visit project_ticket_path(project, ticket)
+      expect(page).not_to have_heading "New Comment"
+    end
     scenario 'cannot see the Edit Project link' do
       visit project_path(project)
       expect(page).not_to have_link 'Edit Project'
@@ -54,6 +58,10 @@ RSpec.feature 'Users can only see the appropiate links' do
     scenario 'can see the New Project link' do
       visit '/'
       expect(page).to have_link 'New Project'
+    end
+    scenario 'can see the new comment' do
+      visit project_ticket_path(project, ticket)
+      expect(page).to have_heading "New Comment"
     end
     scenario 'can see the Edit Project link' do
       visit project_path(project)
