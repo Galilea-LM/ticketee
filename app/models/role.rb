@@ -3,7 +3,7 @@
 class Role < ApplicationRecord
   belongs_to :user
   belongs_to :project
-  
+
   def roles
     hash = {}
     Role.available_roles.each do |role|
@@ -11,5 +11,4 @@ class Role < ApplicationRecord
     end
     hash
   end
-
 end

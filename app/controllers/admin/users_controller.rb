@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::ApplicationController
-  before_action :set_prohects, only: [:new, :create, :edit, :update]
+  before_action :set_prohects, only: %i[new create edit update]
   before_action :set_user, only: %i[show edit update archive]
   def index
     @users = User.excluding_archived.order(:email)
   end
 
-  def edit
-  end
+  def edit; end
 
   def archive
     if @user == current_user
@@ -47,8 +46,7 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 
   def set_user
     @user = User.find(params[:id])

@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class CommentsControllerTest < ActionDispatch::IntegrationTest
+class StateTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

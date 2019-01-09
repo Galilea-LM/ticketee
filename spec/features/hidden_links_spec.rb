@@ -4,7 +4,8 @@ require 'rails_helper'
 RSpec.feature 'Users can only see the appropiate links' do
   let(:user) { FactoryBot.create(:user) }
   let(:admin) { FactoryBot.create(:user, :admin) }
-  let(:ticket) do FactoryBot.create(:ticket, project: project, author: user) 
+  let(:ticket) do
+    FactoryBot.create(:ticket, project: project, author: user)
   end
 
   context 'anonymus users' do
@@ -21,7 +22,7 @@ RSpec.feature 'Users can only see the appropiate links' do
     end
     scenario 'cannot see the new comment' do
       visit project_ticket_path(project, ticket)
-      expect(page).not_to have_heading "New Comment"
+      expect(page).not_to have_heading 'New Comment'
     end
     scenario 'cannot see the Edit Project link' do
       visit project_path(project)
@@ -61,7 +62,7 @@ RSpec.feature 'Users can only see the appropiate links' do
     end
     scenario 'can see the new comment' do
       visit project_ticket_path(project, ticket)
-      expect(page).to have_heading "New Comment"
+      expect(page).to have_heading 'New Comment'
     end
     scenario 'can see the Edit Project link' do
       visit project_path(project)

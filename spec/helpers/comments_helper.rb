@@ -15,7 +15,7 @@ RSpec.describe TicketPolicy do
       it { should_not permit_action :destroy }
     end
     context 'for viewers of the  project' do
-      before { assign_role!(user, :viewer,  project) }
+      before { assign_role!(user, :viewer, project) }
       it { should permit_action :show }
       it { should_not permit_action :create }
       it { should_not permit_action :update }
@@ -30,7 +30,7 @@ RSpec.describe TicketPolicy do
     end
     context 'for managers of other projects' do
       before { assign_role!(:user, :manager, FactoryBot.create(:project)) }
-      it { should  permit_action :show }
+      it { should permit_action :show }
       it { should_not permit_action :create }
       it { should_not permit_action :update }
       it { should  permit_action :destroy }
