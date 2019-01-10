@@ -5,3 +5,13 @@
     by <cite><%= comment.author %></cite>
   </footer>
 </blockquote>
+<%= state_transition_for(comment) %>
+<% if  comment.previous_state != comment.state %>
+ <p> 
+  <strong><i class="fa fa-gear"></i> state chamged </strong> 
+  <% if comment.previous_state.present? %>
+    from <%= render comment.previous_state %> 
+  <% end %> 
+   to <%= render comment.state %>
+</p>
+<% end %>

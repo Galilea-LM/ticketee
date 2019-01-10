@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
 
   def show
     authorize @ticket, :show?
+    @comment = @ticket.comments.buils(state_is: @ticket.state_id)
   end
 
   def edit
