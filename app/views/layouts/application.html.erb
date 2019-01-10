@@ -2,13 +2,13 @@ render 'sidebar'
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-    <<% if content_for?(:title) %>
-        <%= yield(:title) %>
-     <% else %>
-        Ticketee
-      <% end %>>
+      <<% if content_for?(:title) %>
+      <%= yield(:title) %>
+    <% else %>
+                            Ticketee
+                          <% end %>>
     </title>
 
     <%= csrf_meta_tags %>
@@ -21,10 +21,10 @@ render 'sidebar'
         <div clas="navbar-header">
           <%= link_to "Ticketee", root_path, class: "navbar-brand"%>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
         </div>
         <div class="collapse navbar-collapse" id="collapse">
@@ -33,55 +33,60 @@ render 'sidebar'
               <%= link_to "Home", root_path %>
 
             </li>
-              <% admins_only do %>
+            <% admins_only do %>
               <li>
-               <%= link_to "Admin", admin_root_path %>
+                <%= link_to "Admin", admin_root_path %>
               </li>
             <% end %>
 
             <% unless user_signed_in? %>
-            <li class="<%= "active" if current_page? ("/users/sing_up") %>">
-            <%=link_to "Sign up", new_user_registration_path%>
-            </li>
-            <li class="<%= "active" if current_page? ("/users/sing_in") %>">
-            <%=link_to "Sign in", new_user_session_path%>
-            </li>
-          <% end %>
-          <% if user_signed_in? %>
-            <div class="navbar-right">
-            <p class="navbar-text">
-            Signed in as <%= current_user.email %>
-            </p>
-            <ul class="nav navbar-nav">
-              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+              <li class="<%= "active" if current_page? ("/users/sing_up") %>">
+                <%=link_to "Sign up", new_user_registration_path%>
               </li>
-            </ul>
-           </div>
-          <% end %>
+              <li class="<%= "active" if current_page? ("/users/sing_in") %>">
+                <%=link_to "Sign in", new_user_session_path%>
+              </li>
+            <% end %>
+            <% if user_signed_in? %>
+              <div class="navbar-right">
+                <p class="navbar-text">
+                Signed in as <%= current_user.email %>
+              </p>
+              <ul class="nav navbar-nav">
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %> </li>
+              </ul>
+              </div>
+            <% end %>
           </ul>
         </div>
       </div>
     </nav>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <style>
+<% State.all.each do |state| %>
+  .state-<%= state.name.parameterize %>{
+    background-color: <%= state.color %>;
+  }
+<% end %>
+    </style>
 
   </head>
 
   <body>
     <div  class="container">
-
-    <% flash.each do |key, message| %>
+      <% flash.each do |key, message| %>
         <div class= "alert alert-<%= key %>">
           <%= message %>
         </div>
-    <% end %>
+      <% end %>
 
-    <%= yield %>
-  </div>
+      <%= yield %>
+    </div>
 
   </body>
 
 </html>
 
-<link rel="stylesheet" href="/assets/projects-[digest].css?body=1"
-media="all" data-turbolinks-track="true" />
-<link rel="stylesheet" href="/assets/application-[digest].css?body=1"
-media="all" data-turbolinks-track="true" />
+<link rel="stylesheet" href="/assets/projects-[digest].css?body=1" media="all" data-turbolinks-track="true" />
+<link rel="stylesheet" href="/assets/application-[digest].css?body=1" media="all" data-turbolinks-track="true" />

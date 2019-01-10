@@ -17,11 +17,12 @@
     </ul>
     <ul id="tickets">
       <% @project.tickets.each do |ticket| %>
-        <li>
-          <%= ticket.id %>
-          <%= link_to ticket.name, [@project, ticket] %>
-        </li>
-      <% end %>
+      <li>
+        #<%= ticket.id %> -
+        <%= link_to ticket.name, [@project, ticket] %>
+        <%= render ticket.state if ticket.state %>
+      </li>
+      <% end %> 
     </ul>
   </div>
 </header>
