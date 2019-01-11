@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 RSpec.feature 'Users can create new tickets' do
+  let(:state){ FactoryBot.create :state, name: "New", default: true }
   let(:user) { FactoryBot.create(:user) }
   before do
     login_as(user)
@@ -13,15 +14,16 @@ RSpec.feature 'Users can create new tickets' do
   scenario 'wit valid attributes' do
     fill_in 'Name', with: 'Non-standars compliance'
     fill_in 'Description', with: 'My pages are ugly!'
-    clic_button 'Create Ticket'
+    click_button 'Create Ticket'
     expect(page).to have_content 'Ticket has been created.'
+    expect(page).to have_content 'State: New'
     within('#ticket') do
       expect(page).to have_content "Author: #{user.email}"
     end
   end
 
   scenario 'when providing invalid attibutes' do
-    clic_button 'Create Ticket'
+    click_button 'Create Ticket'
 
     expect(page).to have_content 'Ticket has not been created.'
     expect(page).to have_content "Name can't be blank"
