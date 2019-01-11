@@ -23,9 +23,13 @@ class Admin::StatesController < ApplicationController
       flash.now[:alert] = 'State has not been updated.'
       render 'edit'
     end
-
   end
-
+  def make_default
+    @state = state.find(params[id])
+    @state.make_default!
+    flash[:notice] = "'#{@state.name}' is now the default state."
+    redirect_to admin_states_path
+  end
   def destroy 
   end
   private
