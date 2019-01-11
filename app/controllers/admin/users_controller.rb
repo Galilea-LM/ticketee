@@ -7,7 +7,6 @@ class Admin::UsersController < Admin::ApplicationController
     @users = User.excluding_archived.order(:email)
   end
 
-  def edit; end
 
   def archive
     if @user == current_user
@@ -46,13 +45,23 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
-  def show; end
+  def show
+  end
+
+
+  private
+  def build_roles_for(user)
+    role_data = params.fetch(:roles, [])
+    role_data.each do |project_id, role_name|
+      if role_name.present?
+        user.roles.build(project_id: project_id, role: role_name)
+      end
+    end
+  end
 
   def set_user
     @user = User.find(params[:id])
   end
-
-  private
 
   def set_projects
     @projects = Project.order(:name)
