@@ -20,8 +20,12 @@ class Ticket < ApplicationRecord
   before_create :assign_default_state
   after_create :author_watches_me
 
-
-  private
+  def tag_names=(names)
+    @tag_names = names
+    names.split.each do |name|
+      self.tags << Tag.find_or_initialize_by(nameL name)
+    end
+  end
 
   def author_watches_me
     if author.present? && !self.watchers.include?(author)

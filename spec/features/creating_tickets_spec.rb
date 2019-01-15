@@ -37,4 +37,16 @@ RSpec.feature 'Users can create new tickets' do
     expect(page).to have_content 'Ticket has not been created.'
     expect(page).to have_content 'Description is too short'
   end
+  scenario "whit associated tags" do 
+    fill_in "Name", with: "Non-standards compliance"
+    fill_in "Description", with: "My pages are ugly!"
+    fill_in "Tags", with: "browser visual"
+    click_button "Create Ticket"
+
+    expect(page).to have_content "Ticket has been created."
+    within("#ticket #tags") do 
+      expect(page).to have_content "browser"
+      expect(page).to have_content "visual"
+    end
+  end
 end
