@@ -2,6 +2,8 @@
 
 class CommentsController < ApplicationController
   before_action :set_ticket
+  after_create :set_ticket_state
+  after_create :associate_tags_with_tickets
 
   def create
     @creator = CommentCreator.build(@ticket.comments, current_user,
@@ -18,7 +20,6 @@ class CommentsController < ApplicationController
       render 'tickets/show'
     end
   end
-
   private
 
   def set_ticket
