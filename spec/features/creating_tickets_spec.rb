@@ -6,8 +6,8 @@ RSpec.feature 'Users can create new tickets' do
   let(:user) { FactoryBot.create(:user) }
   before do
     login_as(user)
-    project = FactoryBot.create(:projects, name: 'Internet Explorer')
-    assign_role!(user, :viewer, project)
+    project = FactoryBot.create(:project, name: 'Internet Explorer')
+    assign_role!(user, :manager, project)
     visit project_path(project)
     click_link 'New Ticket'
   end

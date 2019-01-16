@@ -19,7 +19,12 @@ class CommentsController < ApplicationController
       @comment = @creator.comment
       render 'tickets/show'
     end
+    unless policy(@ticket).tag?
+      whitelisted_params.delete(:tag_names)
+    end 
   end
+
+
   private
 
   def set_ticket
@@ -33,10 +38,15 @@ class CommentsController < ApplicationController
   def sanitized_parameters
     whitelisted_params = comment_params
 
-    whitelisted_params.delete(:state_id) unless policy(@ticket).change_state?
+    unless policy(@ticket).change_state	    whitelisted_params.delete(:state_id)
+    end
+    
+    unless policy(@ticket).change_state?
+    whitelisted_params.delete(:tag_names) 
+    end
 
-    whitelisted_params.delete(:tag_names) unless policy(@ticket).tag?
-
+    unless policy(@ticket).tag?
     whitelisted_params
-  end
+    end
+end
 end

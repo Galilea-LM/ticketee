@@ -7,7 +7,7 @@
     <%= f.association :state %>
   <% end %>
   <% if policy(ticket).tag? %>
-    <%= render "tag/form", f: f %>
+    <%= render "tags/form", f: f %>
   <% end %>
 
   <%= f.submit class: "btn btn-primary" %>
