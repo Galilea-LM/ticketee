@@ -44,11 +44,26 @@ blockquote.comment p {
     color: white;
 
     &.remove {
-      font-family: "FontAwesome";
       @extend .fa-close;
+      font-family: "FontAwesome";
       margin-right: 0.5em;
       text-decoration: none;
     }
+  }
+}
+
+.unwatch {
+  @extend .btn-danger;
+
+  &:before {
+    @extend .fa-eye-slash;
+  }
+}
+.watch {
+  @extend .btn-success;
+
+  &:before {
+    @extend .fa-eye;
   }
 }
 
@@ -60,21 +75,5 @@ blockquote.comment p {
   &:before {
     font-family: "FontAwesome";
     padding-right: 0.5em;
-  }
-}
-
-.watch {
-  @extend .btn-success;
-
-  &:before {
-    @extend .fa-eye;
-  }
-}
-
-.unwatch {
-  @extend .btn-danger;
-
-  &:before {
-    @extend .fa-eye-slash;
   }
 }
